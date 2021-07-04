@@ -1,0 +1,82 @@
+.txt-center {
+    text-align: center;
+}
+
+.txt-right {
+    text-align: right;
+}
+
+.logo {
+    width: 48px;
+    height:48px;
+}
+
+.bg-gradient-1 {
+    background-image: linear-gradient(to right, black , red);
+}
+
+.bg-light-grey {
+    background-color: lightgray;
+}
+
+.bg-dark-grey {
+    background-color: darkgrey;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.border-solid {
+    border-style: solid;
+}
+
+.border-bottom-sm {
+    border-bottom: 5px solid black;
+}
+
+.padding-all {
+        padding-top: 5px;
+        padding-right: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+}
+
+.padding-bottom-sm {
+    padding-bottom: 1px;
+}
+
+.padding-top-5 {
+    padding-top: 5px;
+}
+
+.margin-bottom-sm {
+    margin-bottom: 1px;
+}
+
+.round-corners {
+    border-radius: 25px;
+}
+
+.nav-tab {
+    background-color: darkgrey;
+    width: 100px;
+    text-align: center;
+}
+
+.tab-active {
+    background-color: black;
+    color: white;
+}
+
+.tab-inactive {
+}
+
+.nav > li > a:hover {
+    background-color: darkgrey;
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
