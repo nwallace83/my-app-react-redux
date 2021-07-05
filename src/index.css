@@ -42,6 +42,10 @@
     margin-left: 5px;
 }
 
+.margin-top-5 {
+    margin-top: 5px;
+}
+
 .border-all {
     border: 1px solid black;
 }
@@ -87,14 +91,25 @@ a:focus {
 }
 
 .tab-active {
-    background-color: darkgrey;
+    background-color: white;
+    border-bottom: 1px solid white;
 }
 
 .tab-inactive {
-    background-color: white;
+    background-color: darkgrey;
 }
 
 .nav > li > a:hover {
     background-color: lightgrey;
     color: white;
+}
+
+#xkcd-refresh {
+    width:15px;
+    height:15px;
+    margin-right: 5px;
+}
+
+.fa-trash-alt:hover {
+    color:red;
 }

@@ -21,7 +21,7 @@ class ContentBody extends React.Component {
 
     render() {
         return (
-            <div className="round-corners">
+            <div id="contentBody">
                 {this.getTabBody()}
             </div>
         )

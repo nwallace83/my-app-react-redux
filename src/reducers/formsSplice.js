@@ -8,10 +8,17 @@ export const formsSlice = createSlice({
     reducers: {
         addPlayer: (state,player) => {
             return {players: [...state.players,player.payload]}
+        },
+        deletePlayer: (state,index) => {
+            let newArray = [...state.players].slice()
+            newArray.splice(index,1)
+            return {
+                players: newArray
+            }
         }
     }
 })
 
-export const { addPlayer }  = formsSlice.actions
+export const { addPlayer, deletePlayer }  = formsSlice.actions
 
 export default formsSlice.reducer

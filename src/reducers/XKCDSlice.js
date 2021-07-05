@@ -13,10 +13,13 @@ export const XKCDSlice = createSlice({
             let newArray = [...state.comics]
             newArray.splice(comic.payload,1);
             return {comics: newArray}
+        },
+        deleteAllComics: () => {
+            return {comics: []}
         }
     }
 })
 
-export const { fetchComics, addComics, deleteComic }  = XKCDSlice.actions
+export const { fetchComics, addComics, deleteComic, deleteAllComics }  = XKCDSlice.actions
 
 export default XKCDSlice.reducer
