@@ -9,16 +9,13 @@ const mapStateToProps = (state) => {
     return {players: state.forms.players}
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {dispatch: dispatch}
-}
-
 class FormsPractice extends React.Component {
     
     render (){
         return (
             <div className="row">
                 <div className="txt-center"><h1>Fun with Forms</h1></div>
+                 <AddPlayerForm />
                 <table className="table table-striped table-bordered txt-center">
                     <thead>
                         <tr>
@@ -34,10 +31,6 @@ class FormsPractice extends React.Component {
                         })}
                     </tbody>
                 </table>
-
-                <div className="row">
-                    <div className="col-md-3 border-all"><AddPlayerForm /></div>
-                </div>
             </div>
         )
     }
@@ -50,7 +43,7 @@ class PlayerRow extends React.Component {
                 <td>{this.props.index}</td>
                 <td>{this.props.player.name}</td>
                 <td>{this.props.player.class}</td>
-                <td><FontAwesomeIcon icon={faTrashAlt} dispatch={this.props.dispatch} onClick={() => this.props.dispatch(deletePlayer(this.props.index))}/></td>
+                <td><FontAwesomeIcon icon={faTrashAlt} onClick={() => this.props.dispatch(deletePlayer(this.props.index))}/></td>
             </tr>
         )
     }
