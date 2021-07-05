@@ -20,9 +20,6 @@ class AddPlayerForm extends React.Component {
             name: event.target[0].value,
             class: event.target[1].value,
         }
-        console.log(this.props)
-
-        // this.props.submitPlayer(player);
     }
 
     render() {

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import AddPlayerForm from './addPlayerForm'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 const mapStateToProps = (state) => {
     return {players: state.forms.players}
@@ -17,6 +19,7 @@ class FormsPractice extends React.Component {
                             <th scope="col">Key</th>
                             <th scope="col">Name</th>
                             <th scope="col">Class</th>
+                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +44,7 @@ class PlayerRow extends React.Component {
                 <td>{this.props.index}</td>
                 <td>{this.props.player.name}</td>
                 <td>{this.props.player.class}</td>
+                <td><FontAwesomeIcon icon={faCoffee} /></td>
             </tr>
         )
     }
