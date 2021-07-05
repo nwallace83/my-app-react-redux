@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const menuSlice = createSlice({
     name:'menu',
     initialState: {
-        activeTab: "xkcd",
+        activeTab: "forms",
     },
     reducers: {
         changeTab: (state,tab) => {

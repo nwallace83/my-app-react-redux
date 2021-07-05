@@ -22,7 +22,7 @@ class XKCD extends React.Component {
     componentDidMount = () => {
          if (this.props.XKCD.comics.length < 1) {
             for (let index = 0; index < 10; index++) {
-                fetch('/api' + Math.floor(Math.random() * 2481 + 1) + '/info.0.json')
+                fetch('/api/' + Math.floor(Math.random() * 2481 + 1) + '/info.0.json')
                 .then(res => res.json())
                 .then(response => this.props.dispatch(addComics(response)))
             }

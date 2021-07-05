@@ -10,7 +10,6 @@ export const XKCDSlice = createSlice({
             state.comics.push(comic.payload)
         },
         deleteComic: (state,comic) => {
-            //let newArray = state.comics.slice()
             let newArray = [...state.comics]
             newArray.splice(comic.payload,1);
             return {comics: newArray}

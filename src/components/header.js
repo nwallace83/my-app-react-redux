@@ -19,7 +19,7 @@ class Header extends React.Component {
     }
 
     getButtonClasses(tabName) {
-        return "nav-link nav-tab " + (this.props.activeTab === tabName ? "tab-active" : "tab-inactive")
+        return "nav-tab " + (this.props.activeTab === tabName ? "tab-active" : "tab-inactive")
     }
 
     render() {
@@ -27,8 +27,9 @@ class Header extends React.Component {
             <div className="row bg-gradient-1">
                 <ul className="nav">
                     <li><img alt="grumpy-cat" className="logo" src={grumpyCat} /></li>
-                    <li><a className={this.getButtonClasses("xkcd")} href="#" onClick={() => this.props.changeTab("xkcd")}>XKCD</a></li>
-                    <li><a className={this.getButtonClasses("other")} href="#" onClick={() => this.props.changeTab("other")}>Other</a></li>
+                    <li className="nav-item"><a className={this.getButtonClasses("xkcd")} href="#" onClick={() => this.props.changeTab("xkcd")}>XKCD</a></li>
+                    <li className="nav-item"><a className={this.getButtonClasses("forms")} href="#" onClick={() => this.props.changeTab("forms")}>Forms</a></li>
+                    <li className="nav-item"><a className={this.getButtonClasses("other")} href="#" onClick={() => this.props.changeTab("other")}>Other</a></li>
                 </ul>
             </div>
         )

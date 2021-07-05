@@ -7,8 +7,8 @@
 }
 
 .logo {
-    width: 48px;
-    height:48px;
+    width: 35px;
+    height:35px;
 }
 
 .bg-gradient-1 {
@@ -35,6 +35,17 @@
     border-bottom: 5px solid black;
 }
 
+.margin-all-5 {
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.border-all {
+    border: 1px solid black;
+}
+
 .padding-all {
         padding-top: 5px;
         padding-right: 5px;
@@ -59,24 +70,31 @@
 }
 
 .nav-tab {
-    background-color: darkgrey;
     width: 100px;
     text-align: center;
+    border: .5px solid black;
+    color: black;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    display: block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+}
+
+a:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 .tab-active {
-    background-color: black;
-    color: white;
+    background-color: darkgrey;
 }
 
 .tab-inactive {
+    background-color: white;
 }
 
 .nav > li > a:hover {
-    background-color: darkgrey;
-    color: white;
-}
-
-.nav-link {
+    background-color: lightgrey;
     color: white;
 }
