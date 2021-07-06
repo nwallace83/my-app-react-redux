@@ -38,10 +38,14 @@ class AddPlayerForm extends React.Component {
         })
     }
 
-    activateSubmitButton() {
+    isFormValid() {
         return (this.state.player.playerName &&
-             this.state.player.playerClass &&
-              this.state.player.playerClass != 'Select Class.....') ? 'btn-success' : 'disabled'
+                    this.state.player.playerClass && 
+                        this.state.player.playerClass != 'Select Class.....')
+    }
+
+    getClassForSubmitButton() {
+        return this.isFormValid() ? 'btn-success' : null
     }
 
     onSubmit() {
@@ -68,9 +72,9 @@ class AddPlayerForm extends React.Component {
                         </Form.Control>
                     </Form.Group>
                     <Form.Group controlId="ControlSubmit">
-                        <Button type= "submit" variant="secondary" 
+                        <Button type= "submit" variant="secondary" disabled={!this.isFormValid()}
                         onClick={() => this.props.submitPlayer(this.state.player)}
-                        className={this.activateSubmitButton()}>Submit</Button>
+                        className={this.getClassForSubmitButton()}>Submit</Button>
                     </Form.Group>
                 </Form>
             </div>
