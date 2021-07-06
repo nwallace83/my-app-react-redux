@@ -44,7 +44,7 @@ class XKCD extends React.Component {
     render() {
         return ( 
             <div id="comic-div" className="row margin-top-5">
-                <div className="margin-all-5">
+                <div className="margin-all-5 col-lg-12">
                     <button className="btn btn-dark" onClick={this.refreshComics}>
                         <FontAwesomeIcon icon={faSync} id="xkcd-refresh"/>Get New Comics
                     </button>
