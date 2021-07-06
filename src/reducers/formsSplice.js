@@ -4,8 +4,8 @@ export const formsSlice = createSlice({
     name:'forms',
     initialState: {
         players: [
-            {playerName: "Kavion", playerClass:"Demon Hunter"},
             {playerName:"Morelynn", playerClass:"Mage"},
+            {playerName: "Kavion", playerClass:"Demon Hunter"},
             {playerName: "Askr", playerClass: "Warlock"},
             {playerName: "Evileternal", playerClass: "Hunter"},
             {playerName: "Laterr", playerClass: "Shaman"},
@@ -34,11 +34,11 @@ export const formsSlice = createSlice({
             return {players: [player.payload,...state.players]}
         },
         deletePlayer: (state,index) => {
-            let newArray = [...state.players].slice()
-            newArray.splice(index,1)
-            return {
-                players: newArray
+            let newState = {...state,
+                players: [...state.players]
             }
+            newState.players.splice(index.payload,1)
+            return newState;
         }
     }
 })

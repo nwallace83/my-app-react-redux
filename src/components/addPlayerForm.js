@@ -7,10 +7,11 @@ import Button from 'react-bootstrap/Button'
 const mapDispatchToProps = (dispatch) => {
     return {
         submitPlayer: (player) => {
-            if (player.playerName < 1 || player.className < 1) {
+            if (player.playerName < 1 || player.playerClass < 1 || player.playerClass == 'Select Class.....') {
                 return null
             }
             dispatch(addPlayer(player))
+            document.getElementById("add-user-form").reset()
         }
     }
 }
@@ -37,10 +38,16 @@ class AddPlayerForm extends React.Component {
         })
     }
 
+    activateSubmitButton() {
+        return (this.state.player.playerName &&
+             this.state.player.playerClass &&
+              this.state.player.playerClass != 'Select Class.....') ? 'btn-success' : 'disabled'
+    }
+
     render() {
         return (
             <div className="border-solid padding-all-5"> 
-                <Form>
+                <Form id="add-user-form">
                     <Form.Group controlId="ControlInput1">
                         <Form.Control type="txt" placeholder="Player Name" onChange={e => {this.setFormState('playerName',e.target.value)}}/>
                     </Form.Group>
@@ -54,7 +61,9 @@ class AddPlayerForm extends React.Component {
                         </Form.Control>
                     </Form.Group>
                     <Form.Group controlId="ControlSubmit">
-                        <Button variant="secondary" onClick={() => this.props.submitPlayer(this.state.player)}>Submit</Button>
+                        <Button variant="secondary" 
+                        onClick={() => this.props.submitPlayer(this.state.player)}
+                        className={this.activateSubmitButton()}>Submit</Button>
                     </Form.Group>
                 </Form>
             </div>
