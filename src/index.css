@@ -113,3 +113,47 @@ a:focus {
 .fa-trash-alt:hover {
     color:red;
 }
+
+.player-class-dk {
+    color: red;
+}
+
+.player-class-dh {
+    color: purple
+}
+
+.player-class-monk {
+    color: green;
+}
+
+.player-class-rogue {
+    color: yellow;
+}
+
+.player-class-mage {
+    color: lightblue;
+}
+
+.player-class-warlock {
+    color: plum;
+}
+
+.player-class-shaman {
+    color: blue;
+}
+
+.player-class-hunter {
+    color: lightgreen;
+}
+
+.player-class-druid {
+    color: orange;
+}
+
+.player-class-paladin {
+    color: pink;
+}
+
+.player-class-warrior {
+    color: goldenrod
+}

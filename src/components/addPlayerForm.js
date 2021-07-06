@@ -1,42 +1,62 @@
-import React from 'react';
+import React from 'react'
 import { connect } from 'react-redux'
-import { addPlayer } from '../reducers/formsSplice';
+import { addPlayer } from '../reducers/formsSplice'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        submitPlayer: (event) => {
-            if (!event.target[0].value || !event.target[1].value) {
+        submitPlayer: (player) => {
+            if (player.playerName < 1 || player.className < 1) {
                 return null
-            }
-
-            const player = {
-                name: event.target[0].value,
-                class: event.target[1].value,
             }
             dispatch(addPlayer(player))
         }
     }
 }
 
+const classes =[
+    'Death Knight','Demon Hunter','Druid','Hunter','Mage','Monk','Paladin','Priest','Rogue','Shaman','Warlock','Warrior'
+]
+
 class AddPlayerForm extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            player: {
+                playerName: '',
+                playerClass: '',
+            }
+        }
+    }
+
+    setFormState(field,newValue) {
+        this.setState({
+            ...this.state,
+            player:{...this.state.player,[field]: newValue}
+        })
+    }
 
     render() {
         return (
-            <div class="row col-lg-6 border-solid margin-all-5 txt-center"> 
-                <form className="form-group" onSubmit={this.props.submitPlayer}>
-                    <div className="input-group">
-                        <div className="col-md-5 padding-all-5">
-                            <input type="txt" className="form-control" placeholder="Name" maxlength="50"/>
-                        </div>
-                        <div className="col-md-5 padding-all-5">
-                            <input type="txt" className="form-control" placeholder="Class" />
-                        </div>
-                        <div className="col-md-2 padding-all-5">
-                            <button type="submit" className="btn btn-primary">Add Player</button>
-                        </div>
-                    </div>
-
-                </form>
+            <div className="border-solid padding-all-5"> 
+                <Form>
+                    <Form.Group controlId="ControlInput1">
+                        <Form.Control type="txt" placeholder="Player Name" onChange={e => {this.setFormState('playerName',e.target.value)}}/>
+                    </Form.Group>
+                    <Form.Group controlId="ControlInput=2">
+                        <Form.Control as="select" onChange={e => {this.setFormState('playerClass',e.target.value)}}>
+                            <option>Select Class.....</option>
+                            <option disabled>_______________________</option>
+                            {classes.map( (className,index) => {
+                                return (<option key={index}>{className}</option>)
+                            })}
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group controlId="ControlSubmit">
+                        <Button variant="secondary" onClick={() => this.props.submitPlayer(this.state.player)}>Submit</Button>
+                    </Form.Group>
+                </Form>
             </div>
         )
     }
