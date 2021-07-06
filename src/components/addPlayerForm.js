@@ -44,10 +44,14 @@ class AddPlayerForm extends React.Component {
               this.state.player.playerClass != 'Select Class.....') ? 'btn-success' : 'disabled'
     }
 
+    onSubmit() {
+        this.setState({player: {playerName:'',playerClass:''}})
+    }
+
     render() {
         return (
             <div className="border-solid padding-all-5"> 
-                <Form id="add-user-form">
+                <Form id="add-user-form" onSubmit={() => this.onSubmit()}>
                     <Form.Group controlId="ControlInput1">
                         <Form.Control type="txt" placeholder="Player Name" onChange={e => {this.setFormState('playerName',e.target.value)}}/>
                     </Form.Group>
@@ -61,7 +65,7 @@ class AddPlayerForm extends React.Component {
                         </Form.Control>
                     </Form.Group>
                     <Form.Group controlId="ControlSubmit">
-                        <Button variant="secondary" 
+                        <Button type= "submit" variant="secondary" 
                         onClick={() => this.props.submitPlayer(this.state.player)}
                         className={this.activateSubmitButton()}>Submit</Button>
                     </Form.Group>
