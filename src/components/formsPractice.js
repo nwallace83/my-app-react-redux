@@ -13,26 +13,32 @@ class FormsPractice extends React.Component {
 
     render (){
         return (
-            <div className="row">
-                <div className="col-lg-4"><h1>Fun with Forms</h1>
-                    <AddPlayerForm />
+            <div>
+                <div className="txt-center col-md-12">    
+                    <h2>Fun with Forms</h2>
+                    <hr />
                 </div>
-                <div className="col-lg-8">
-                    <table className="table table-striped table-bordered txt-center">
-                        <thead>
-                            <tr>
-                                <th scope="col">Key</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Class</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.props.players.map((player,key) => {
-                                return <PlayerRow player={player} index={key} key={key} dispatch={this.props.dispatch}/>
-                            })}
-                        </tbody>
-                    </table>
+                <div className="row">
+                    <div className="col-lg-4">
+                        <AddPlayerForm />
+                    </div>
+                    <div className="col-lg-8">
+                        <table className="table table-striped table-bordered txt-center">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Key</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Class</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.props.players.map((player,key) => {
+                                    return <PlayerRow player={player} index={key} key={key} dispatch={this.props.dispatch}/>
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         )

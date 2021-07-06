@@ -51,6 +51,9 @@ class AddPlayerForm extends React.Component {
     render() {
         return (
             <div className="border-solid padding-all-5"> 
+                <div className='txt-center'>
+                    <h5>Add Player</h5>
+                </div>
                 <Form id="add-user-form" onSubmit={() => this.onSubmit()}>
                     <Form.Group controlId="ControlInput1">
                         <Form.Control type="txt" placeholder="Player Name" onChange={e => {this.setFormState('playerName',e.target.value)}}/>
