@@ -7,7 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSync } from '@fortawesome/free-solid-svg-icons'
 
 const mapStateToProps = (state) => {
-    return state
+    return {
+        comics: state.XKCD.comics
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -25,7 +27,9 @@ class XKCD extends React.Component {
     }
 
     componentDidMount = () => {
-        this.getComics();
+        if (this.props.comics.length <= 0) {
+            this.getComics()
+        }
     }
 
     refreshComics = () => {
@@ -34,11 +38,9 @@ class XKCD extends React.Component {
     }
 
     getComics = () => {
-        for (let index = 0; index < 10; index++) {
-            fetch('/api/' + Math.floor(Math.random() * 2481 + 1) + '/info.0.json')
+        fetch('/api/xkcd')
             .then(res => res.json())
-            .then(response => this.props.dispatch(addComics(response)))
-        }
+            .then(res => this.props.dispatch(addComics(res)))
     }
 
     render() {
@@ -49,7 +51,7 @@ class XKCD extends React.Component {
                         <FontAwesomeIcon icon={faSync} id="xkcd-refresh"/>Get New Comics
                     </button>
                 </div>
-                {this.props.XKCD.comics.map( (comic,index) => { return <Comic comic={comic} key={index} index={index} /> })} 
+                {this.props.comics.map( (comic,index) => { return <Comic comic={comic} key={index} index={index} /> })} 
             </div>
         )
     }

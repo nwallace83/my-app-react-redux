@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 const mapDispatchToProps = (dispatch) => {
     return {
         submitPlayer: (player) => {
-            if (player.playerName < 1 || player.playerClass < 1 || player.playerClass == 'Select Class.....') {
+            if (player.playerName < 1 || player.playerClass < 1 || player.playerClass === 'Select Class.....') {
                 return null
             }
             dispatch(addPlayer(player))
@@ -41,7 +41,7 @@ class AddPlayerForm extends React.Component {
     isFormValid() {
         return (this.state.player.playerName &&
                     this.state.player.playerClass && 
-                        this.state.player.playerClass != 'Select Class.....')
+                        this.state.player.playerClass !== 'Select Class.....')
     }
 
     getClassForSubmitButton() {

@@ -7,7 +7,7 @@ export const XKCDSlice = createSlice({
     },
     reducers: {
         addComics: (state,comic) => {
-            state.comics.push(comic.payload)
+            return {...state,comics: [...comic.payload]}
         },
         deleteAllComics: () => {
             return {comics: []}
