@@ -7,7 +7,7 @@ export const menuSlice = createSlice({
     },
     reducers: {
         changeTab: (state,tab) => {
-            return {activeTab: tab.payload}
+            return {...state,activeTab: tab.payload}
         }
     }
 })
