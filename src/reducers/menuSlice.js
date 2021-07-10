@@ -3,10 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 export const menuSlice = createSlice({
     name:'menu',
     initialState: {
-        activeTab: "forms",
+        activeTab: localStorage.getItem("activeTab") ? localStorage.getItem("activeTab") : "xkcd"
     },
     reducers: {
         changeTab: (state,tab) => {
+            localStorage.setItem("activeTab",tab.payload)
             return {...state,activeTab: tab.payload}
         }
     }
