@@ -60,21 +60,10 @@ class XKCD extends React.Component {
 }
 
 class RefreshButton extends React.Component {
-    getSpinnerIcon = () => {
-        return <FontAwesomeIcon icon={faSync} id="xkcd-refresh" spin={this.props.isLoading}/>
-            
-        // switch (this.props.isLoading) {
-        //     case true: return <Spinner animation="border" role="status" id="xkcd-refresh">
-        //                         <span className="sr-only">Loading...</span>
-        //                     </Spinner>
-        //     default: return <FontAwesomeIcon icon={faSync} id="xkcd-refresh"/>
-        // } 
-    }
-
     render() {
         return (
             <button className="btn btn-dark" onClick={this.props.onClick}>
-                {this.getSpinnerIcon()}
+                <FontAwesomeIcon icon={faSync} id="xkcd-refresh" spin={this.props.isLoading}/>
                 <span>Get New Comics</span>
             </button>
         )
