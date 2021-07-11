@@ -10,8 +10,12 @@ const mapDispatchToProps = (dispatch) => {
             if (player.playerName < 1 || player.playerClass < 1 || player.playerClass === 'Select Class.....') {
                 return null
             }
-            dispatch(addPlayer(player))
-            document.getElementById("add-user-form").reset()
+
+            fetch('/api/players',{method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(player)})
+                .then(res => res.json())
+                .then(res =>  dispatch(addPlayer(res)))
+                .then(() => document.getElementById("add-user-form").reset())
+                .catch(err => console.log(err))
         }
     }
 }
@@ -27,6 +31,7 @@ class AddPlayerForm extends React.Component {
             player: {
                 playerName: '',
                 playerClass: '',
+                protected: false,
             }
         }
     }
@@ -49,7 +54,7 @@ class AddPlayerForm extends React.Component {
     }
 
     onSubmit() {
-        this.setState({player: {playerName:'',playerClass:''}})
+        this.setState({player: {playerName:'', playerClass:'', protected: false}})
     }
 
     render() {
