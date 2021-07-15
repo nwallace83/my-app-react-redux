@@ -90,8 +90,8 @@ class UserDetails extends React.Component {
     render() {
         return(
             <Row id="user-details">
-                <Col lg={8} />
-                <Col lg={4} className="txt-right">
+                <Col lg={7} />
+                <Col lg={5} className="txt-right">
                     {this.props.session.userName}<FontAwesomeIcon style={{paddingLeft: "5px"}}icon={faUser} />
                     <Button size="sm" id="logout-button" variant="secondary" onClick={this.props.logout}>Logout</Button>
                 </Col>
