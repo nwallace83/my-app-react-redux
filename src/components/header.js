@@ -124,10 +124,10 @@ class LoginForm extends React.Component {
             <Form id="login-form">
                 <Form.Row as={Row}>
                     <Col lg={4}>
-                        <Form.Control size="sm" type="txt" placeholder="username is username" onChange={(e) => this.setFormState('userName',e.target.value)}/>
+                        <Form.Control size="sm" type="txt" placeholder="username" onChange={(e) => this.setFormState('userName',e.target.value)}/>
                     </Col>
                     <Col lg={4}>
-                        <Form.Control size="sm" type="password" placeholder="password is password" onChange={(e) => this.setFormState('password',e.target.value)}/>
+                        <Form.Control size="sm" type="password" placeholder="password" onChange={(e) => this.setFormState('password',e.target.value)}/>
                     </Col>
                     <Col lg={2}>
                         <Button size="sm" type="submit" id="login-button" type="submit" variant="secondary" onClick={() => this.submitLogin(this.state)}>Login</Button>
