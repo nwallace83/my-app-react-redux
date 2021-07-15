@@ -5,7 +5,6 @@ import { addComics } from '../reducers/XKCDSlice';
 import { deleteAllComics } from '../reducers/XKCDSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSync } from '@fortawesome/free-solid-svg-icons'
-import Spinner from 'react-bootstrap/Spinner'
 
 const mapStateToProps = (state) => {
     return {
@@ -49,11 +48,15 @@ class XKCD extends React.Component {
 
     render() {
         return (
-            <div id="comic-div" className="row margin-top-5">
-                <div className="margin-all-5 col-lg-12">
-                    <RefreshButton onClick={this.refreshComics} isLoading={this.state.isLoading}/>
+            <div id="comic-div" className="container-fluid margin-top-5">
+                <div>
+                    <div className="margin-all-5 col-lg-12">
+                        <RefreshButton onClick={this.refreshComics} isLoading={this.state.isLoading}/>
+                    </div>
+                    <div className="row">
+                        {this.props.comics.map( (comic,index) => { return <Comic comic={comic} key={index} index={index} /> })}
+                    </div>
                 </div>
-                {this.props.comics.map( (comic,index) => { return <Comic comic={comic} key={index} index={index} /> })}
             </div>
         )
     }

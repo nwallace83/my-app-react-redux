@@ -8,4 +8,12 @@ module.exports = (app) => {
       changeOrigin: true,
     })
   );
+
+  app.use(
+    '/auth',
+    createProxyMiddleware({
+      target: 'http://localhost:3001/',
+      changeOrigin: true,
+    })
+  );
 };
