@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+const jwt = require('jsonwebtoken')
 
 export const sessionSlice = createSlice({
     name:'session',
@@ -9,10 +10,11 @@ export const sessionSlice = createSlice({
     },
     reducers: {
         setSession: (state,session) => {
+            const decodedWebToken = jwt.decode(session.payload.sessionToken)
             return {...state,
                 sessionToken: session.payload.sessionToken,
-                userName: session.payload.userName,
-                role: session.payload.role,
+                userName: decodedWebToken.userName,
+                role: decodedWebToken.role,
             }
         },
         clearSession:(state) => {

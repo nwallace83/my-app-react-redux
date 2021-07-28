@@ -16,4 +16,12 @@ module.exports = (app) => {
       changeOrigin: true,
     })
   );
+
+  app.use(
+    '/admin',
+    createProxyMiddleware({
+      target: 'http://localhost:3001/',
+      changeOrigin: true,
+    })
+  );
 };

@@ -24,8 +24,6 @@ const mapDispatchToProps = (dispatch) => {
         logout: () => {
             dispatch(clearSession())
             Cookies.remove("authorization")
-            Cookies.remove("userName")
-            Cookies.remove("role")
         }
     }
 }
@@ -40,28 +38,23 @@ class Header extends React.Component {
     }
 
     setSessionFromCookie() {
-        if (Cookies.get("authorization") && Cookies.get("userName") && Cookies.get("role")) {
-            this.props.setSession({userName: Cookies.get("userName"), sessionToken: Cookies.get("authorization"), role: Cookies.get("role")})
+        const authCookie = Cookies.get("authorization")
+        if (authCookie) {
+            const decodedWebToken = jwt.decode(authCookie)
+            this.props.setSession({userName: decodedWebToken.userName, sessionToken: Cookies.get("authorization"), role: decodedWebToken.role})
         }
-    }
-
-    isUserLoggedIn() {
-        if (!this.props.session.sessionToken) {
-            return false
-        }
-
-        const decodedWebToken = jwt.decode(this.props.session.sessionToken);
-        const dateNow = new Date()
-
-        if (decodedWebToken.expiresAt < dateNow.getTime()){
-            return false
-        }
-
-        return true
     }
 
     componentDidMount() {
         this.setSessionFromCookie()
+    }
+
+    getAdminTabs() {
+        if (this.props.session && this.props.session.role === "ADMIN") {
+            return <li className="nav-item"><a className={this.getButtonClasses("users")} href="#" onClick={() => this.props.changeTab("users")}>Users</a></li>
+        } else {
+            return null
+        }
     }
 
     render() {
@@ -72,12 +65,12 @@ class Header extends React.Component {
                         <li><img alt="grumpy-cat" className="logo" src={grumpyCat} /></li>
                         <li className="nav-item"><a className={this.getButtonClasses("xkcd")} href="#" onClick={() => this.props.changeTab("xkcd")}>XKCD</a></li>
                         <li className="nav-item"><a className={this.getButtonClasses("forms")} href="#" onClick={() => this.props.changeTab("forms")}>Forms</a></li>
-                        <li className="nav-item"><a className={this.getButtonClasses("auth")} href="#" onClick={() => this.props.changeTab("auth")}>Auth</a></li>
-                        <li className="nav-item"><a className={this.getButtonClasses("other")} href="#" onClick={() => this.props.changeTab("other")}>Other</a></li>
+                        <li className="nav-item"><a className={this.getButtonClasses("other")} href="#" onClick={() => this.props.changeTab("other")}>Auth</a></li>
+                        {this.getAdminTabs()}
                     </ul>
                 </div>
                 <div className="offset-lg-3 col-lg-5" style={{paddingTop: "2px"}}>
-                    {this.isUserLoggedIn() ? 
+                    {this.props.session.sessionToken ? 
                         <UserDetails session={this.props.session} logout={this.props.logout}/> : 
                         <LoginForm setSession={this.props.setSession} changeTab={this.props.changeTab}/>}
                 </div>
@@ -92,7 +85,7 @@ class UserDetails extends React.Component {
             <Row id="user-details">
                 <Col lg={7} />
                 <Col lg={5} className="txt-right">
-                    {this.props.session.userName}<FontAwesomeIcon style={{paddingLeft: "5px"}}icon={faUser} />
+                    {this.props.session.userName}<FontAwesomeIcon style={{paddingLeft: "5px"}} icon={faUser} />
                     <Button size="sm" id="logout-button" variant="secondary" onClick={this.props.logout}>Logout</Button>
                 </Col>
             </Row>

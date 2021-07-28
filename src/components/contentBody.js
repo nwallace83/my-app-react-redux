@@ -1,8 +1,8 @@
 import React from 'react'
 import XKCD from './XKCD'
+import Users from './admin/users'
 import { connect } from 'react-redux'
 import FormsPractice from './formsPractice'
-import Auth from './auth'
 import NewUserRegistration from './newUserRegistration'
 
 const mapStateToProps = (state) => {
@@ -14,9 +14,9 @@ class ContentBody extends React.Component {
         switch (this.props.activeTab){
             case "xkcd": return <XKCD />
             case "forms": return <FormsPractice />
-            case "auth": return <Auth />
             case "other": return "Not implemented"
             case "register": return <NewUserRegistration />
+            case "users": return <Users />
             default: return "ERROR!!!!!!!!!!!"
         }
     }
