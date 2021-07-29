@@ -23,6 +23,7 @@ const mapDispatchToProps = (dispatch) => {
         setSession: (session) => dispatch(setSession(session)),
         logout: () => {
             dispatch(clearSession())
+            dispatch(changeTab("xkcd"))
             Cookies.remove("authorization")
         }
     }
