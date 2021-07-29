@@ -14,7 +14,6 @@ class ContentBody extends React.Component {
         switch (this.props.activeTab){
             case "xkcd": return <XKCD />
             case "forms": return <FormsPractice />
-            case "other": return "Not implemented"
             case "register": return <NewUserRegistration />
             case "users": return <Users />
             default: return "ERROR!!!!!!!!!!!"

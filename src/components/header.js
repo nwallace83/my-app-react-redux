@@ -66,7 +66,6 @@ class Header extends React.Component {
                         <li><img alt="grumpy-cat" className="logo" src={grumpyCat} /></li>
                         <li className="nav-item"><a className={this.getButtonClasses("xkcd")} href="#" onClick={() => this.props.changeTab("xkcd")}>XKCD</a></li>
                         <li className="nav-item"><a className={this.getButtonClasses("forms")} href="#" onClick={() => this.props.changeTab("forms")}>Forms</a></li>
-                        <li className="nav-item"><a className={this.getButtonClasses("other")} href="#" onClick={() => this.props.changeTab("other")}>Auth</a></li>
                         {this.getAdminTabs()}
                     </ul>
                 </div>
