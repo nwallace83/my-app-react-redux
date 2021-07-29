@@ -73,8 +73,11 @@
     border-radius: 25px;
 }
 
+.top-right {
+    margin-top: 35px;
+}
+
 .nav-tab {
-    width: 100px;
     text-align: center;
     border: .5px solid black;
     color: black;

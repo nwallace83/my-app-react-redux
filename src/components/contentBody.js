@@ -1,6 +1,7 @@
 import React from 'react'
 import XKCD from './XKCD'
 import Users from './admin/users'
+import { ScratchPad } from './scratchPad'
 import { connect } from 'react-redux'
 import FormsPractice from './formsPractice'
 import NewUserRegistration from './newUserRegistration'
@@ -16,6 +17,7 @@ class ContentBody extends React.Component {
             case "forms": return <FormsPractice />
             case "register": return <NewUserRegistration />
             case "users": return <Users />
+            case "scratchpad": return <ScratchPad/>
             default: return "ERROR!!!!!!!!!!!"
         }
     }

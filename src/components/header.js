@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button'
 import Cookies from 'js-cookie'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { toastr } from 'react-redux-toastr';
 
 const jwt = require('jsonwebtoken')
 
@@ -72,6 +73,7 @@ class Header extends React.Component {
                         <li><img alt="grumpy-cat" className="logo" src={grumpyCat} /></li>
                         <li className="nav-item"><a className={this.getButtonClasses("xkcd")} href="#" onClick={() => this.props.changeTab("xkcd")}>XKCD</a></li>
                         <li className="nav-item"><a className={this.getButtonClasses("forms")} href="#" onClick={() => this.props.changeTab("forms")}>Forms</a></li>
+                        <li className="nav-item"><a className={this.getButtonClasses("scratchpad")} href="#" onClick={() => this.props.changeTab("scratchpad")}>Scratch Pad</a></li>
                         {this.getAdminTabs()}
                     </ul>
                 </div>
@@ -114,8 +116,17 @@ class LoginForm extends React.Component {
 
     submitLogin(payload) {
         fetch('/auth/login',{method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)})
-            .then(res => res.json())
-            .then(res => this.props.setSession(res.sessionToken))
+            .then(res => {
+                if (res.ok) {
+                    res.json().then(res => {
+                        this.props.setSession(res.sessionToken)
+                        toastr.success("Succesfully Logged In")
+                    })
+                } else {
+                    toastr.error("Invalid Login")
+                }
+            })
+            
     }
 
     render() {
