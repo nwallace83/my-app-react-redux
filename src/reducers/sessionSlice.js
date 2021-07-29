@@ -10,9 +10,9 @@ export const sessionSlice = createSlice({
     },
     reducers: {
         setSession: (state,session) => {
-            const decodedWebToken = jwt.decode(session.payload.sessionToken)
+            const decodedWebToken = jwt.decode(session.payload)
             return {...state,
-                sessionToken: session.payload.sessionToken,
+                sessionToken: session.payload,
                 userName: decodedWebToken.userName,
                 role: decodedWebToken.role,
             }

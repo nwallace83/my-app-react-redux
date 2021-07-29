@@ -41,8 +41,14 @@ class Header extends React.Component {
     setSessionFromCookie() {
         const authCookie = Cookies.get("authorization")
         if (authCookie) {
-            const decodedWebToken = jwt.decode(authCookie)
-            this.props.setSession({userName: decodedWebToken.userName, sessionToken: Cookies.get("authorization"), role: decodedWebToken.role})
+            fetch('/auth')
+            .then (res => {
+                if (res.ok) {
+                    this.props.setSession(authCookie)
+                } else {
+                    this.props.logout()
+                }
+            })
         }
     }
 
@@ -109,7 +115,7 @@ class LoginForm extends React.Component {
     submitLogin(payload) {
         fetch('/auth/login',{method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)})
             .then(res => res.json())
-            .then(res => this.props.setSession(res))
+            .then(res => this.props.setSession(res.sessionToken))
     }
 
     render() {
